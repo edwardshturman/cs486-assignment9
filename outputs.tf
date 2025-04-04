@@ -1,6 +1,11 @@
-output "instance_private_ips" {
-  description = "Private IP addresses of the EC2 instances"
-  value       = module.ec2_instances[*].private_ip
+output "worker_instance_private_ips" {
+  description = "Private IP addresses of the worker EC2 instances"
+  value       = module.workers[*].private_ip
+}
+
+output "manager_instance_private_ips" {
+  description = "Private IP addresses of the manager EC2 instances"
+  value       = module.managers[*].private_ip
 }
 
 output "vpc_id" {

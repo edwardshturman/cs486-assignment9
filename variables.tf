@@ -10,10 +10,16 @@ variable "instance_prefix" {
   default     = "cs486-assignment9-edwardshturman"
 }
 
-variable "instance_count" {
-  description = "Number of EC2 instances to create"
+variable "worker_count" {
+  description = "Number of worker EC2 instances to create"
   type        = number
-  default     = 5
+  default     = 2
+}
+
+variable "manager_count" {
+  description = "Number of manager EC2 instances to create"
+  type        = number
+  default     = 3
 }
 
 variable "vpc_name" {
