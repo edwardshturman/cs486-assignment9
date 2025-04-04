@@ -1,4 +1,4 @@
-# CS 486 Assignment 8
+# CS 486 Assignment 9
 
 Implementation details and instructions for using Terraform with Packer
 
@@ -23,8 +23,8 @@ brew install hashicorp/tap/terraform
 Get started by cloning this repo on your machine:
 
 ```zsh
-git clone https://github.com/edwardshturman/cs486-assignment8.git cs486-assignment8-edwardshturman
-cd cs486-assignment8-edwardshturman
+git clone https://github.com/edwardshturman/cs486-assignment9.git cs486-assignment9-edwardshturman
+cd cs486-assignment9-edwardshturman
 ```
 
 ### Required variables
@@ -82,14 +82,14 @@ The AMI ID from the output will automatically be added as `ami` to the Terraform
 
 ## Creating infrastructure with Terraform
 
-We're all good to go to launch six EC2 instances using our AMI created with Packer and a bastion host.
+We're all good to go to launch our five EC2 instances (two worker nodes, three manager nodes) using our AMI created with Packer and a bastion host.
 
 ```zsh
 terraform init
 terraform apply
 ```
 
-You should now see seven running instances in `us-west-1`.
+You should now see six running instances in `us-west-1`.
 
 ![Screenshot of AWS EC2 Instances in the Console](assets/instances.png)
 
@@ -98,13 +98,13 @@ You should now see seven running instances in `us-west-1`.
 You can SSH into the bastion host by running:
 
 ```zsh
-ssh -A -i bastion-key ec2-user@<bastion public IPv4>
+ssh -A -i bastion-key ubuntu@<bastion public IPv4>
 ```
 
 From there, you can connect to any one of the EC2 instances by using the private IPv4:
 
 ```zsh
-ssh ec2-user@<EC2 private IPv4>
+ssh ubuntu@<EC2 private IPv4>
 ```
 
 You can verify Docker was installed successfully and is running by creating a container for the `hello-world` image:
