@@ -25,7 +25,7 @@ module "bastion" {
   version = "2.0.0"
 
   region                 = "us-west-1"
-  ami_id                 = "ami-0fa75d35c5505a879" # Amazon Linux 2023 AMI 64-bit x86
+  ami_id                 = "ami-05e1c8b4e753b29d3" # Ubuntu 22.04 LTS x86
   bastion_instance_types = ["t2.micro"]
   name_prefix            = var.instance_prefix
   vpc_id                 = module.vpc.vpc_id
