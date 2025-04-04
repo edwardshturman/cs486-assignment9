@@ -54,6 +54,46 @@ resource "aws_security_group" "ec2_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  ingress {
+    description = "Open Docker port 2377 over TCP for Swarm"
+    from_port   = 2377
+    to_port     = 2377
+    protocol    = "tcp"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
+
+  ingress {
+    description = "Open Docker port 7946 over TCP for Swarm"
+    from_port   = 7946
+    to_port     = 7946
+    protocol    = "tcp"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
+
+  ingress {
+    description = "Open Docker port 7946 over UDP for Swarm"
+    from_port   = 7946
+    to_port     = 7946
+    protocol    = "udp"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
+
+  ingress {
+    description = "Open Docker port 4789 over TCP for Swarm"
+    from_port   = 4789
+    to_port     = 4789
+    protocol    = "tcp"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
+
+  ingress {
+    description = "Open Docker port 4789 over UDP for Swarm"
+    from_port   = 4789
+    to_port     = 4789
+    protocol    = "udp"
+    cidr_blocks = [module.vpc.vpc_cidr_block]
+  }
 }
 
 module "workers" {
